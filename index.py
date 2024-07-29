@@ -4,7 +4,7 @@ app = Flask (__name__)
 
 @app.route('/')
 def principal():
-    return "Bienvenidos o bienvenida a mi sitio web con PYTHON y"
+    return "Bienvenidos o bienvenida a mi sitio web con PYTHON"
 
 @app.route('/contacto')
 def contacto():

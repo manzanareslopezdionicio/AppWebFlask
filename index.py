@@ -18,5 +18,13 @@ def lenguajes():
 def home():
     return render_template('index.html')
 
+@app.route('/contacto')
+def contacto():
+    return render_template('contacto.html') 
+
+@app.route('/lenguajeprogramacion')
+def lenguaje():
+    return render_template('lenguajeprogramacion.html')
+
 if __name__ == '__main__':
     app.run(debug=True)

@@ -22,7 +22,7 @@ def home():
 def contacto():
     return render_template('contacto.html') 
 
-@app.route('/lenguajeprogramacion')
+@app.route('/lenguaje')
 def lenguaje():
     return render_template('lenguajeprogramacion.html')
 

@@ -24,7 +24,7 @@ def contacto():
 
 @app.route('/lenguaje')
 def lenguaje():
-    return render_template('lenguajeprogramacion.html')
+    return render_template('lenguaje.html')
 
 if __name__ == '__main__':
     app.run(debug=True)

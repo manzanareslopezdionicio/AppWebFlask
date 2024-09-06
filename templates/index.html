@@ -5,91 +5,111 @@
 {% block body %}
 <!--Carusel de pagina de principal-->
 <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-indicators">
-      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-    </div>
-    <div class="carousel-inner">
-      <div class="carousel-item active" data-bs-interval="10000">
-        <img src="./static/img/imagen1.jpg" class="d-block w-100" alt="...">
-      </div>
-      <div class="carousel-item" data-bs-interval="2000">
-        <img src="{{ url_for('static', filename='img/imagen1.jpg')}}" class="d-block w-100" alt="...">
-      </div>
-      <div class="carousel-item" data-bs-interval="2000">
-        <img src="{{ url_for('static', filename='img/imagen1.jpg')}}" class="d-block w-100" alt="...">
-      </div>
-    </div> 
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+      aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+      aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+      aria-label="Slide 3"></button>
   </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active" data-bs-interval="2000">
+      <img src="./static/img/imagen1.jpg" class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <h3>Se registran las tareas</h3>
+        <p>Algunos contenidos de marcador de posición representativos para las actividades.</p>
+        <a href="#" class="btn btn-primary" role="button"> Ver más...</a>
+      </div>
+    </div>
+    <div class="carousel-item" data-bs-interval="2000">
+      <img src="{{ url_for('static', filename='img/imagen2.jpg')}}" class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <h3>Se registran las tareas de la plataforma</h3>
+        <p>Cambiamos para ser mejor en el proceso seguridad.</p>
+      </div>
+    </div>
+    <div class="carousel-item" data-bs-interval="2000">
+      <img src="{{ url_for('static', filename='img/imagen3.jpg')}}" class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <h3>Somos IA</h3>
+        <p>El acceso al saber de la era dígital.</p>
+      </div>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
 
-  <div class="row text-center">
-    <div>
+<div class=" container-fluid">
+  <div class="row justify-content-center">
+    <div class=" text-center">
       <p class="h4 mb-3 p-5">INFORMACION</p>
     </div>
-    <div class="col">
-        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Similique temporibus cumque quas ab unde commodi 
-          dolorum ea, quaerat adipisci rem nam eum hic accusantium aliquam ex? Consequuntur tempore iure porro.</p>
+    <div class="col-xs-12 col-md-6 col-lg-3">
+      <p class=" shadow p-3 mb-5 bg-body-tertiary rounded-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+        Autem quam non itaque iusto est vitae labore, eius ut corporis sequi veniam. Eius accusantium nostrum veniam
+        eveniet dolorem, harum nam. Suscipit?</p>
     </div>
-    <div class="col">
-        <p class=" shadow p-3 mb-5 bg-body-tertiary rounded-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-           Autem quam non itaque iusto est vitae labore, eius ut corporis sequi veniam. Eius accusantium nostrum veniam 
-           eveniet dolorem, harum nam. Suscipit?</p>
+    <div class="col-xs-12 col-md-6 col-lg-3">
+      <p class=" shadow p-3 mb-5 bg-body-tertiary rounded-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+        Autem quam non itaque iusto est vitae labore, eius ut corporis sequi veniam. Eius accusantium nostrum veniam
+        eveniet dolorem, harum nam. Suscipit?</p>
     </div>
-    <div class="col">
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Saepe nisi adipisci voluptas laboriosam rerum? 
-          Nostrum quam laboriosam odio amet sapiente voluptate error, qui distinctio non corrupti doloremque ullam!
-          Praesentium, impedit.</p>
+    <div class="col-xs-12 col-md-6 col-lg-3">
+      <p class=" shadow p-3 mb-5 bg-body-tertiary rounded-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+        Autem quam non itaque iusto est vitae labore, eius ut corporis sequi veniam. Eius accusantium nostrum veniam
+        eveniet dolorem, harum nam. Suscipit?</p>
     </div>
-  </div>  
+  </div>
+</div>
 
-  <footer class=" container-fluid">
-    <div class="row p-5 pb-3 bg-dark text-bg-dark">
-      <div class="col-xs-12 col-md-6 col-lg-3">
-        <p class="h3">APP SYSTEM</p>
-        <p class=" text-secondary">Juigalpa, chontales</p>
-        <p class=" text-secondary">Nicaragua</p>
+
+<footer class=" container-fluid">
+  <div class="row p-5 pb-3 bg-dark text-bg-dark">
+    <div class="col-xs-12 col-md-6 col-lg-3">
+      <p class="h3">APP SYSTEM</p>
+      <p class=" text-secondary">Juigalpa, chontales</p>
+      <p class=" text-secondary">Nicaragua</p>
+    </div>
+    <div class="col-xs-12 col-md-6 col-lg-3">
+      <p class="h5 mb-3">Cursos</p>
+      <div class="mb-2">
+        <a class=" text-secondary text-decoration-none" href="#">Python</a>
       </div>
-      <div class="col-xs-12 col-md-6 col-lg-3">
-        <p class="h5 mb-3">Cursos</p>
-        <div class="mb-2">
-          <a class=" text-secondary text-decoration-none" href="#">Python</a>
-        </div>
-        <div class="mb-2">
-          <a class=" text-secondary text-decoration-none" href="#">JavaScript</a>
-        </div>
-        <div class="mb-2">
-          <a class=" text-secondary text-decoration-none" href="#">Bootstrap</a>
-        </div>
+      <div class="mb-2">
+        <a class=" text-secondary text-decoration-none" href="#">JavaScript</a>
       </div>
-      <div class="col-xs-12 col-md-6 col-lg-3">
-        <p class="h5 mb-3">Links</p>
-        <div class=" mb-2">
-          <a class=" text-secondary text-decoration-none" href="#">Terms & Conditions</a>
-        </div>
-      </div>
-      <div class="col-xs-12 col-md-6 col-lg-3">
-        <p class="h5 mb-3">Contacto</p>
-        <div class=" mb-2">
-          <a class=" text-secondary text-decoration-none btn-1" href="#"> <i class="bi bi-facebook"></i> Facebook</a>
-        </div>
-        <div>
-          <a class=" text-secondary text-decoration-none" href="#"><i class="bi bi-instagram"></i> Instagram</a>
-        </div>
-      </div>
-      <hr>
-      <div class=" col-xs-12 pt-2">
-        <p class=" text-white text-center">&copy Copyright - All rights reserver 2024</p>
+      <div class="mb-2">
+        <a class=" text-secondary text-decoration-none" href="#">Bootstrap</a>
       </div>
     </div>
-  </footer>
+    <div class="col-xs-12 col-md-6 col-lg-3">
+      <p class="h5 mb-3">Links</p>
+      <div class=" mb-2">
+        <a class=" text-secondary text-decoration-none" href="#">Terms & Conditions</a>
+      </div>
+    </div>
+    <div class="col-xs-12 col-md-6 col-lg-3">
+      <p class="h5 mb-3">Contacto</p>
+      <div class=" mb-2">
+        <a class=" text-secondary text-decoration-none btn-1" href="#"> <i class="bi bi-facebook"></i> Facebook</a>
+      </div>
+      <div>
+        <a class=" text-secondary text-decoration-none" href="#"><i class="bi bi-instagram"></i> Instagram</a>
+      </div>
+    </div>
+    <hr>
+    <div class=" col-xs-12 pt-2">
+      <p class=" text-white text-center">&copy Copyright - All rights reserver 2024</p>
+    </div>
+  </div>
+</footer>
 
-{% endblock  %}
+{% endblock %}

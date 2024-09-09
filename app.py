@@ -26,5 +26,10 @@ def login():
 def registro():
     return render_template('registro.html')
 
+@app.route('/tarea')
+def tarea():
+    return render_template('tarea.html')
+
+
 if __name__ == '__main__':
     app.run(debug=True)

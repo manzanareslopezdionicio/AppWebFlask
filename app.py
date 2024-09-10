@@ -10,6 +10,8 @@ app.config['MYSQL_PASSWORD'] = 'password123'
 app.config['MYSQL_DB'] = 'crud'
 
 mysql =  MySQL(app)
+
+#CONSULTAR LA BASE DE DATOS 
 @app.route('/tarea')
 def tarea():
     cur = mysql.connection.cursor()
@@ -18,7 +20,18 @@ def tarea():
     cur.close()
     return render_template('/tarea.html', cliente=data)
 
-
+#INSERTAR DATOS A LA BASE DE DATOS
+@app.route('/insert', methods=['POST'])
+def insert():
+    if request.method == "POST":
+        flash("Datos insertados satisfactoriamente")
+        name = request.form['name']
+        email = request.form['email']
+        phone = request.form['phone']
+        cur = mysql.connection.cursor()
+        cur.execute("INSERT INTO cliente(name,email,phone) VALUES(%s, %s, %s)", (name, email, phone))
+        mysql.connection.commit()
+        return redirec(url_for('/tarea'))
 
 @app.route('/')
 def home():
@@ -31,12 +44,6 @@ def servicios():
 @app.route('/contacto')
 def contacto():
     return render_template('contacto.html')
-'''
-
-@app.route('/tarea')
-def tarea():
-    return render_template('tarea.html')
-'''
 
 @app.route('/login')
 def login():

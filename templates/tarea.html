@@ -37,22 +37,18 @@
                     </tr>
                 </thead>
                 <tbody>
+                    {% for row in cliente%}
                     <tr>
-                        <th scope="row">1</th>
-                        <td>Roberto Matamoros</td>
-                        <td>roberto@gmail.com</td>
-                        <td>5555-8888</td>
+                        <td>{{row.0}}</td>
+                        <td>{{row.1}}</td>
+                        <td>{{row.2}}</td>
+                        <td>{{row.3}}</td>
                         <td>
                             <a href="#" class=" btn btn-warning btn-sm" data-toggle="modal" data-target="">Editar</a>
                             <a href="#" class=" btn btn-danger btn-sm" data-toggle="modal" data-target="">Eliminar</a>
                         </td>
                     </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                    </tr>
+                
                     <!--Modal agregar usuario-->
                     <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                         aria-hidden="true">
@@ -92,6 +88,7 @@
                     </div>
         </div>
         <!--Modal editar usuario-->
+        {%endfor%}
         </tbody>
         </table>
     </div>

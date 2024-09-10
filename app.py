@@ -1,10 +1,15 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, url_for, flash
+from werkzeug.urls import redirect
+from flask_mysqldb import MySQL
 
 app = Flask (__name__)
-app.secret_key = 'many random bytes'
+app.secret_key = 'appsecretkey'
 
 app.config['MYSQL_HOST'] = 'localhost'
-app.config['MYSQL_USER'] = 'root'
+app.config['MYSQL_USER'] = 'dmanzanares'
+app.config['MYSQL_PASSWORD'] = 'password123'
+app.config['MYSQL_DB'] = 'crud'
+
    
 @app.route('/')
 def home():
@@ -18,9 +23,9 @@ def servicios():
 def contacto():
     return render_template('contacto.html')
 
-@app.route('/lenguaje')
-def lenguaje():
-    return render_template('lenguaje.html')
+@app.route('/tarea')
+def tarea():
+    return render_template('tarea.html')
 
 @app.route('/login')
 def login():
@@ -32,7 +37,11 @@ def registro():
 
 @app.route('/tarea')
 def tarea():
-    return render_template('tarea.html')
+    cur = mysql.connection.cursor()
+    cur.execute("SELECT * FROM cliente")
+    data = cur.fetchall()
+    cur.close
+    return render_template('tarea.html', cliente=data)
 
 
 if __name__ == '__main__':

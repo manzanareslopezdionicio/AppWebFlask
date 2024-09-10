@@ -1,5 +1,4 @@
 from flask import Flask, render_template, request, url_for, flash
-from werkzeug.urls import redirect
 from flask_mysqldb import MySQL
 
 app = Flask (__name__)
@@ -10,7 +9,17 @@ app.config['MYSQL_USER'] = 'dmanzanares'
 app.config['MYSQL_PASSWORD'] = 'password123'
 app.config['MYSQL_DB'] = 'crud'
 
-   
+mysql =  MySQL(app)
+@app.route('/tarea')
+def tarea():
+    cur = mysql.connection.cursor()
+    cur.execute("SELECT * FROM cliente")
+    data = cur.fetchall()
+    cur.close()
+    return render_template('/tarea.html', cliente=data)
+
+
+
 @app.route('/')
 def home():
     return render_template('index.html')
@@ -22,10 +31,12 @@ def servicios():
 @app.route('/contacto')
 def contacto():
     return render_template('contacto.html')
+'''
 
 @app.route('/tarea')
 def tarea():
     return render_template('tarea.html')
+'''
 
 @app.route('/login')
 def login():
@@ -34,14 +45,6 @@ def login():
 @app.route('/registro')
 def registro():
     return render_template('registro.html')
-
-@app.route('/tarea')
-def tarea():
-    cur = mysql.connection.cursor()
-    cur.execute("SELECT * FROM cliente")
-    data = cur.fetchall()
-    cur.close
-    return render_template('tarea.html', cliente=data)
 
 
 if __name__ == '__main__':

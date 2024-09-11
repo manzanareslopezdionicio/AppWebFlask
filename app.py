@@ -1,7 +1,9 @@
-from flask import Flask, render_template, request, url_for, flash
+from flask import Flask, render_template, request, url_for, flash, redirect
+from werkzeug.exceptions import abort
 from flask_mysqldb import MySQL
 
 app = Flask (__name__)
+
 app.secret_key = 'appsecretkey'
 
 app.config['MYSQL_HOST'] = 'localhost'
@@ -24,14 +26,14 @@ def tarea():
 @app.route('/insert', methods=['POST'])
 def insert():
     if request.method == "POST":
-        flash("Datos insertados satisfactoriamente")
+        flash("Datos insertados satisfactoriamente.")
         name = request.form['name']
         email = request.form['email']
         phone = request.form['phone']
         cur = mysql.connection.cursor()
         cur.execute("INSERT INTO cliente(name,email,phone) VALUES(%s, %s, %s)", (name, email, phone))
         mysql.connection.commit()
-        return redirec(url_for('/tarea'))
+        return redirect(url_for('/tarea'))
 
 @app.route('/')
 def home():

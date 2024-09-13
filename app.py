@@ -33,6 +33,23 @@ def insert():
         cur = mysql.connection.cursor()
         cur.execute("INSERT INTO cliente(name,email,phone) VALUES(%s, %s, %s)", (name, email, phone))
         mysql.connection.commit()
+        #cur.close()
+        return redirect(url_for('tarea'))
+
+#ACTUALIZAR DATOS EN LA BASE DE DATOS
+@app.route('/update', methods= ['POST','GET'])
+def update():
+    if request.method=='POST':
+        id_data = request.form['id']
+        name = request.form['name']
+        email = request.form['email']
+        phone = request.form['phone']
+        cur.mysql.connection.cursor()
+        cur.execute("""
+        UPDATE cliente SET name=%s, email=%s, phone=%s
+        WHERE id=%s
+        """, (name, email, phone, id_data))
+        flash("Los datos se Actualizaron Satisfactoriamente")
         return redirect(url_for('tarea'))
 
 @app.route('/')

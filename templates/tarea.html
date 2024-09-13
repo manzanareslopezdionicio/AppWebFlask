@@ -44,11 +44,11 @@
                         <td>{{row.2}}</td>
                         <td>{{row.3}}</td>
                         <td>
-                            <a href="#" class=" btn btn-warning btn-sm" data-toggle="modal" data-target="">Editar</a>
+                            <a href="/update{{row.0}}" class=" btn btn-warning btn-sm" data-toggle="modal" data-target="#ModalEdit{{row.0}}">Editar</a>
                             <a href="#" class=" btn btn-danger btn-sm" data-toggle="modal" data-target="">Eliminar</a>
                         </td>
                     </tr>
-                
+
                     <!--Modal agregar usuario-->
                     <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                         aria-hidden="true">
@@ -83,11 +83,51 @@
                                     </form>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+
+                    <!--ACTUALIZAR UN REGISTRO-->
+                    <div class="modal fade" id="ModalEdit{{row.0}}" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        role="dialog" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Actualizado los datos del cliente
+                                    </h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form action="{{url_for('update')}}" method="POST">
+                                        <div class=" form-floating mb-3">
+                                            <input type="hidden" class="form-control" name="id" value="{{row.0}}">
+                                            <label for="id" class="form-label">Codigo del cliente</label>
+                                        </div>
+                                        <div class="form-floating mb-3">
+                                            <input type="text" class="form-control" name="name" value="{{row.1}}">
+                                            <label for="id" class="form-label">Nombre del cliente</label>
+                                        </div>
+                                        <div class="form-floating mb-3">
+                                            <input type="email" class="form-control" name="email" value="{{row.2}}"
+                                                placeholder="name@example.com" required>
+                                            <label for="id" class="form-label">Correo Electrónico</label>
+                                        </div>
+                                        <div class="form-floating mb-3">
+                                            <input type="text" class="form-control" name="phone" value="{{row.3}}"
+                                                placeholder="Teléfono" required>
+                                            <label for="phone" class="form-label">Teléfono</label>
+
+                                            <div class=" float-end pt-4 mb-2">
+                                                <button type="submit" class="btn btn-success">Guardar</button>
+                                            </div>
+                                    </form>
+                                </div>
+                            </div>
 
                         </div>
                     </div>
         </div>
-        <!--Modal editar usuario-->
+
         {%endfor%}
         </tbody>
         </table>

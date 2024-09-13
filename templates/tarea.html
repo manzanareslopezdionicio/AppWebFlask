@@ -44,12 +44,12 @@
                         <td>{{row.2}}</td>
                         <td>{{row.3}}</td>
                         <td>
-                            <a href="/update{{row.0}}" class=" btn btn-warning btn-sm" data-toggle="modal" data-target="#ModalEdit{{row.0}}">Editar</a>
+                            <a href="/update{{row.0}}" class=" btn btn-warning btn-sm" data-toggle="modal" data-target="#modaledit{{row.0}}">Editar</a>
                             <a href="#" class=" btn btn-danger btn-sm" data-toggle="modal" data-target="">Eliminar</a>
                         </td>
                     </tr>
 
-                    <!--Modal agregar usuario-->
+                    <!--Modal AGREGAR CLIENTE-->
                     <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                         aria-hidden="true">
                         <div class="modal-dialog">
@@ -87,12 +87,11 @@
                     </div>
 
                     <!--ACTUALIZAR UN REGISTRO-->
-                    <div class="modal fade" id="ModalEdit{{row.0}}" tabindex="-1" aria-labelledby="exampleModalLabel"
-                        role="dialog" aria-hidden="true">
+                    <div id="modaledit{{row.0}}" class="modal - fade"  role="dialog">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Actualizado los datos del cliente
+                                    <h5 class="modal-title">Actualizado los datos del cliente
                                     </h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span></button>

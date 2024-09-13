@@ -52,6 +52,9 @@ def update():
         flash("Los datos se Actualizaron Satisfactoriamente")
         return redirect(url_for('tarea'))
 
+#ELIMINAR UN REGISTRO DE LA BASE DE DATOS
+
+
 @app.route('/')
 def home():
     return render_template('index.html')

@@ -60,7 +60,7 @@
                                         aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <form action="" method="post">
+                                    <form action="{{url_for('insert')}}" method="POST">
                                         <div class=" form-floating mb-3">
 
                                             <input type="text" class="form-control" name="name" id="name" value=""
@@ -73,9 +73,9 @@
                                             <label for="email" class="form-label">Correo electrónico</label>
                                         </div>
                                         <div class="form-floating mb-3">
-                                            <input type="text" class="form-control" name="telefono" id="telefono"
+                                            <input type="text" class="form-control" name="phone" id="phone"
                                                 placeholder="Teléfono" required>
-                                            <label for="telefonio" class="form-label">Teléfono</label>
+                                            <label for="phone" class="form-label">Teléfono</label>
 
                                             <div class=" float-end pt-4 mb-2">
                                                 <button type="submit" class="btn btn-success">Guardar</button>

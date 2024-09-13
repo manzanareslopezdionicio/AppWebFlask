@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, url_for, flash, redirect
-from werkzeug.exceptions import abort
+from werkzeug.utils import redirect
 from flask_mysqldb import MySQL
 
 app = Flask (__name__)
@@ -33,7 +33,7 @@ def insert():
         cur = mysql.connection.cursor()
         cur.execute("INSERT INTO cliente(name,email,phone) VALUES(%s, %s, %s)", (name, email, phone))
         mysql.connection.commit()
-        return redirect(url_for('/tarea'))
+        return redirect(url_for('tarea'))
 
 @app.route('/')
 def home():

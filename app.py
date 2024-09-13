@@ -37,8 +37,8 @@ def insert():
         return redirect(url_for('tarea'))
 
 #ACTUALIZAR DATOS EN LA BASE DE DATOS
-@app.route('/update', methods= ['POST','GET'])
-def update():
+@app.route('/update/<string:id>', methods= ['POST','GET'])
+def update(id):
     if request.method == 'POST':
         id_data = request.form['id']
         name = request.form['name']
@@ -57,10 +57,11 @@ def update():
 #ELIMINAR UN REGISTRO DE LA BASE DE DATOS
 @app.route('/delete/<string:id_data>', methods = ['GET'])
 def delete(id_data):
-    flash("El registro se ha eliminado correctamente")
+    flash("El registro se ha eliminado correctamente.")
     cur = mysql.connection.cursor()
     cur.execute("DELETE FROM cliente WHERE id=%s", (id_data,))
     mysql.connection.commit()
+    mysql.close()
     return redirect(url_for('tarea'))
 
 @app.route('/')

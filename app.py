@@ -40,11 +40,12 @@ def insert():
 @app.route('/update', methods= ['POST','GET'])
 def update():
     if request.method=='POST':
+        
         id_data = request.form['id']
         name = request.form['name']
         email = request.form['email']
         phone = request.form['phone']
-        cur.mysql.connection.cursor()
+        cur = mysql.connection.cursor()
         cur.execute("""
         UPDATE cliente SET name=%s, email=%s, phone=%s
         WHERE id=%s

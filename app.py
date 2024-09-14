@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, url_for, flash, redirect
-from werkzeug.utils import redirect
+#from werkzeug.utils import redirect
 from flask_mysqldb import MySQL
 
 app = Flask (__name__)
@@ -37,8 +37,8 @@ def insert():
         return redirect(url_for('tarea'))
 
 #ACTUALIZAR DATOS EN LA BASE DE DATOS
-@app.route('/update/<string:id>', methods= ['POST','GET'])
-def update(id):
+@app.route('/update', methods= ['POST','GET'])
+def update():
     if request.method == 'POST':
         id_data = request.form['id']
         name = request.form['name']
@@ -61,7 +61,7 @@ def delete(id_data):
     cur = mysql.connection.cursor()
     cur.execute("DELETE FROM cliente WHERE id=%s", (id_data,))
     mysql.connection.commit()
-    mysql.close()
+    #mysql.close()
     return redirect(url_for('tarea'))
 
 @app.route('/')

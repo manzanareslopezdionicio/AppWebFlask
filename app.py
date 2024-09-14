@@ -57,10 +57,11 @@ def update():
 #ELIMINAR UN REGISTRO DE LA BASE DE DATOS
 @app.route('/delete/<string:id_data>', methods = ['GET'])
 def delete(id_data):
-    flash("El registro se ha eliminado correctamente.")
+    
     cur = mysql.connection.cursor()
     cur.execute("DELETE FROM cliente WHERE id=%s", (id_data,))
     mysql.connection.commit()
+    flash("El registro se ha eliminado correctamente.")
     #mysql.close()
     return redirect(url_for('tarea'))
 

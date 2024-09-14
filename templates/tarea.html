@@ -45,8 +45,7 @@
                         <td>{{row.2}}</td>
                         <td>{{row.3}}</td>
                         <td>
-                            <a href="/update/{{row.id}}" type="button" class="btn btn-warning btn-sm" data-toggle="modal"
-                                data-target="#modaledit{{row.id}}">Editar</a>
+                            <a href="/update/{{row.0}}" type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modaledit{{row.0}}">Editar</a>
                             <a href="/delete/{{ row.0 }}"
                                 onclick="return confirm('Están seguros de que quieren eliminarlos')"
                                 class="btn btn-danger btn-sm">Eliminar</a>
@@ -91,7 +90,7 @@
                     </div>
 
                     <!--ACTUALIZAR UN REGISTRO-->
-                    <<div class="modal fade" id="modaledit{{row.0}}" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    <<div id="modaledit{{row.0}}" class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel"
                         aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
@@ -103,7 +102,7 @@
                                 <div class="modal-body">
                                     <form action="{{url_for('update')}}" method="POST">
                                         <div class=" form-floating mb-3">
-                                            <input value="{{row.0}}" type="text" class="form-control">
+                                            <input value="{{row.0}}" name="id" type="text" class="form-control">
                                         </div>
                                         <div class=" form-floating mb-3">
                                             <input value="{{row.1}}" type="text" class="form-control" name="name"
@@ -121,7 +120,7 @@
                                             <label for="phone" class="form-label">Teléfono</label>
 
                                             <div class=" float-end pt-4 mb-2">
-                                                <button type="submit" class="btn btn-success">Guardar</button>
+                                                <button type="submit" class="btn btn-success">Actualizar</button>
                                             </div>
                                     </form>
                                 </div>

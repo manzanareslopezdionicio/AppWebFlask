@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect
 from flask_mysqldb import MySQL
 
 app = Flask (__name__)
@@ -12,6 +12,7 @@ app.config['MYSQL_PORT'] = 3306
 app.config['MYSQL_USER'] = 'dmanzanares'
 app.config['MYSQL_PASSWORD'] = 'password123'
 app.config['MYSQL_DB'] = 'crud'
+app.config['MYSQL_CURSORCLASS']='DictCursor' #Diccionario de la database
 mysql.init_app(app)
 
 #CONSULTAR LA BASE DE DATOS 
@@ -20,15 +21,29 @@ def cliente():
     
     sql = "SELECT * FROM cliente"
     
-    conexion = mysql.connection 
+    conexion = mysql.connection #
     cursor = conexion.cursor()
-    cursor.execute(sql) 
+    cursor.execute(sql) #EJE
     clientes = cursor.fetchall() #RECUPERAR LA VARIABLE
     conexion.commit()
     return render_template('cliente.html', clientes=clientes)
 
+@app.route('/insertar', methods=['POST'])
+def insertar():
+    nombre=request.form['nombre']
+    email=request.form['email']
+    phone=request.form['phone']
+    
+    sql = "INSERT INTO cliente(name, email, phone), VALUE(%s, %s, %s)"
+    datos=(nombre, email, phone)
+    conexion=mysql.connection
+    cursor=conexion.cursor()
+    cursor.execute(sql, datos)
+    conexion.commit()
+    return redirect('/cliente')
+    
     #cur = mysql.connection.cursor()
-    #cur.execute("SELECT * FROM cliente")
+    #cur.execute("SELECT * FROM ciente")
     #data = cur.fetchall()
     #cur.close()
     return render_template('/cliente.html', cliente=data)
@@ -82,9 +97,9 @@ def delete(id_data):
 def home():
     return render_template('index.html')
 
-@app.route('/servicios')
-def servicios():
-    return render_template('servicios.html') 
+@app.route('/agregar')
+def agregar():
+    return render_template('agregar.html') 
 
 @app.route('/contacto')
 def contacto():

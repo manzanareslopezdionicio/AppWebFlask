@@ -1,0 +1,39 @@
+{% extends 'basetarea.html' %}
+
+{% block titulo %}Agregar cliente{% endblock %}
+
+{% block contenido %}
+
+<div class="row">
+    <div class="col-4"></div>
+    <div class="col-12 col-md-9 col-lg-6 col-xl-6 col-xxl-4 p-5">
+        <div class="card">
+            <div class="card-header text-center">AGREGAR CLIENTES</div>
+            <div class="card-body">
+                <form action="/insertar" method="post">
+                    <div class=" form-floating mb-3">
+                        <input type="text" class="form-control" name="nombre" id="nombre" aria-describedby="helpId"
+                            placeholder="Nombres" />
+                        <label for="nombre" class="form-label">Nombres</label>
+                    </div>
+                    <div class=" form-floating mb-3">
+                        <input type="text" class="form-control" name="email" id="email" aria-describedby="helpId"
+                            placeholder="Correo Electronico" />
+                        <label for="email" class="form-label">Correo Electronico</label>
+                    </div>
+                    <div class=" form-floating mb-3">
+                        <input type="text" class="form-control" name="phone" id="phone" aria-describedby="helpId"
+                            placeholder="Telefono" />
+                        <label for="phone" class="form-label">Telefono</label>
+                    </div>
+                    <div class=" text-center">
+                        <button class="btn btn-outline-primary m" type="submit">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

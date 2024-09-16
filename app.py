@@ -3,12 +3,12 @@ from flask_mysqldb import MySQL
 
 app = Flask (__name__)
 
-app.secret_key = 'appsecretkey'
+#app.secret_key = 'appsecretkey'
 
 mysql=MySQL()
 
 app.config['MYSQL_HOST'] = 'localhost'
-app.config['MYSQL_HOST'] = 3306
+app.config['MYSQL_PORT'] = 3306
 app.config['MYSQL_USER'] = 'dmanzanares'
 app.config['MYSQL_PASSWORD'] = 'password123'
 app.config['MYSQL_DB'] = 'crud'
@@ -20,12 +20,12 @@ def cliente():
     
     sql = "SELECT * FROM cliente"
     
-    conexion=mysql.connection
-    cursor=conexion.cursor()
-    cursor.execute(sql)
-    clientes=cursor.fetchall()
+    conexion = mysql.connection 
+    cursor = conexion.cursor()
+    cursor.execute(sql) 
+    clientes = cursor.fetchall() #RECUPERAR LA VARIABLE
     conexion.commit()
-    return render_template('/cliente.html', clientes=clientes)
+    return render_template('cliente.html', clientes=clientes)
 
     #cur = mysql.connection.cursor()
     #cur.execute("SELECT * FROM cliente")

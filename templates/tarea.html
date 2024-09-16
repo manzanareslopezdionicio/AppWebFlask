@@ -90,7 +90,7 @@
                     </div>
 
                     <!--ACTUALIZAR UN REGISTRO-->
-                    <<div id="modaledit{{row.0}}" class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    <div id="modaledit{{row.0}}" class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel"
                         aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
@@ -100,10 +100,10 @@
                                         aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <form action="{{url_for('update')}}" method="POST">
-                                        <div class=" form-floating mb-3">
-                                            <input value="{{row.0}}" name="id" type="text" class="form-control">
-                                        </div>
+                                    <form action="{{ url_for('update')}}" method="POST">
+                                         
+                                            <input value="{{row.0}}" type="hidden" name="id">
+                                        
                                         <div class=" form-floating mb-3">
                                             <input value="{{row.1}}" type="text" class="form-control" name="name"
                                                 id="name" placeholder="Nombre" required>
@@ -126,6 +126,7 @@
                                 </div>
                             </div>
                         </div>
+                        
         </div>
     </div>
 

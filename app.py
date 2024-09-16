@@ -1,5 +1,4 @@
 from flask import Flask, render_template, request, url_for, flash, redirect
-#from werkzeug.utils import redirect
 from flask_mysqldb import MySQL
 
 app = Flask (__name__)
@@ -7,6 +6,7 @@ app = Flask (__name__)
 app.secret_key = 'appsecretkey'
 
 app.config['MYSQL_HOST'] = 'localhost'
+app.config['MYSQL_HOST'] = 3306
 app.config['MYSQL_USER'] = 'dmanzanares'
 app.config['MYSQL_PASSWORD'] = 'password123'
 app.config['MYSQL_DB'] = 'crud'

@@ -1,27 +1,39 @@
-from flask import Flask, render_template, request, url_for, flash, redirect
+from flask import Flask, render_template
 from flask_mysqldb import MySQL
 
 app = Flask (__name__)
 
 app.secret_key = 'appsecretkey'
 
+mysql=MySQL()
+
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_HOST'] = 3306
 app.config['MYSQL_USER'] = 'dmanzanares'
 app.config['MYSQL_PASSWORD'] = 'password123'
 app.config['MYSQL_DB'] = 'crud'
-
-mysql =  MySQL(app)
+mysql.init_app(app)
 
 #CONSULTAR LA BASE DE DATOS 
-@app.route('/tarea')
-def tarea():
-    cur = mysql.connection.cursor()
-    cur.execute("SELECT * FROM cliente")
-    data = cur.fetchall()
-    cur.close()
-    return render_template('/tarea.html', cliente=data)
+@app.route('/cliente')
+def cliente():
+    
+    sql = "SELECT * FROM cliente"
+    
+    conexion=mysql.connection
+    cursor=conexion.cursor()
+    cursor.execute(sql)
+    clientes=cursor.fetchall()
+    conexion.commit()
+    return render_template('/cliente.html', clientes=clientes)
 
+    #cur = mysql.connection.cursor()
+    #cur.execute("SELECT * FROM cliente")
+    #data = cur.fetchall()
+    #cur.close()
+    return render_template('/cliente.html', cliente=data)
+
+'''
 #INSERTAR DATOS A LA BASE DE DATOS
 @app.route('/insert', methods=['POST'])
 def insert():
@@ -64,6 +76,7 @@ def delete(id_data):
     flash("El registro se ha eliminado correctamente.")
     #mysql.close()
     return redirect(url_for('tarea'))
+'''
 
 @app.route('/')
 def home():

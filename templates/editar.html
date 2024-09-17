@@ -10,8 +10,8 @@
         <div class="card">
             <div class="card-header text-center">AGREGAR CLIENTES</div>
             <div class="card-body">
-                <form action="/edit" method="post">
-                    <input type="hidden" value="{{clientes['id']}}">
+                <form action="/edit/actualizar" method="post">
+                    <input type="hidden" name="txtid" value="{{clientes['id']}}">
                     <div class=" form-floating mb-3">
                         <input type="text" class="form-control" name="name" id="name" aria-describedby="helpId"
                             placeholder="Nombres" value="{{clientes['name']}}" />

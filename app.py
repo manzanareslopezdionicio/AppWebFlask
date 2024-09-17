@@ -15,7 +15,7 @@ app.config['MYSQL_DB'] = 'crud'
 app.config['MYSQL_CURSORCLASS']='DictCursor' #Diccionario de la database
 mysql.init_app(app)
 
-#CONSULTAR LA BASE DE DATOS 
+#CONSULTAR Y VISUALIZAR LA BASE DE DATOS 
 @app.route('/cliente')
 def cliente():
     
@@ -60,71 +60,25 @@ def edit(id):
     clientes=cursor.fetchone()
     conexion.commit()
     return render_template('editar.html', clientes=clientes)
+
+#ACTUALIZAR DATOS DE LA BASE DE DATOS
+@app.route('/edit/actualizar', methods=['POST'])
+def actualizar():
+    id = request.form['txtid']
+    name = request.form['name']
+    email = request.form['email']
+    phone = request.form['phone']
     
-    '''
-    name=request.form['name']
-    email=request.form['email']
-    phone=request.form['phone']
+    sql="UPDATE cliente SET name=%s, email=%s, phone=%s WHERE id=%s"
+    datos=(name, email, phone, id)
     
-    sql = "INSERT INTO cliente(name, email, phone), VALUES(%s, %s, %s)"
-    datos = (name, email, phone)
-    conexion = mysql.connection
-    cursor = conexion.cursor()
+    conexion=mysql.connection
+    cursor=conexion.cursor()
     cursor.execute(sql, datos)
     conexion.commit()
-    return redirect('/cliente')
+    return redirect(url_for('cliente'))
     
-    #cur = mysql.connection.cursor()
-    #cur.execute("SELECT * FROM ciente")
-    #data = cur.fetchall()
-    #cur.close()
-    return render_template('/cliente.html', cliente=data)
-
-
-#INSERTAR DATOS A LA BASE DE DATOS
-@app.route('/insert', methods=['POST'])
-def insert():
-    if request.method == "POST":
-        flash("Datos insertados satisfactoriamente.")
-        name = request.form['name']
-        email = request.form['email']
-        phone = request.form['phone']
-        cur = mysql.connection.cursor()
-        cur.execute("INSERT INTO cliente(name,email,phone) VALUES(%s, %s, %s)", (name, email, phone))
-        mysql.connection.commit()
-        cur.close()
-        return redirect(url_for('tarea'))
-
-#ACTUALIZAR DATOS EN LA BASE DE DATOS
-@app.route('/update', methods= ['POST','GET'])
-def update():
-    if request.method == 'POST':
-        id_data = request.form['id']
-        name = request.form['name']
-        email = request.form['email']
-        phone = request.form['phone']
-
-        cur = mysql.connection.cursor()
-        cur.execute("""
-        UPDATE cliente SET name=%s, email=%s, phone=%s
-        WHERE id=%s
-        """, (name, email, phone, id_data))
-        #mysql.connection.commit()
-        flash("Los datos se Actualizaron Satisfactoriamente")
-        return redirect(url_for('tarea'))
-
-#ELIMINAR UN REGISTRO DE LA BASE DE DATOS
-@app.route('/delete/<string:id_data>', methods = ['GET'])
-def delete(id_data):
     
-    cur = mysql.connection.cursor()
-    cur.execute("DELETE FROM cliente WHERE id=%s", (id_data,))
-    mysql.connection.commit()
-    flash("El registro se ha eliminado correctamente.")
-    #mysql.close()
-    return redirect(url_for('tarea'))
-'''
-
 @app.route('/')
 def home():
     return render_template('index.html')

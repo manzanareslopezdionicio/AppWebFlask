@@ -3,7 +3,23 @@
 {% block titulo %}Registro{% endblock %}
 
 {% block contenido %}
-<!--MENSAJE DE ALECTA-->
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+<ul class=flashes>
+    {% for category, message in messages %}
+    <script type="text/javascript">
+        Swal.fire({
+            title: "El cliente",
+            text: "{{message}}",
+            icon: "{{category}}"
+        });
+    </script>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endwith %}
+
+<!--MENSAJE DE ALECTA
 {% with messages = get_flashed_messages(with_categories=true) %}
 {% if messages %}
 <ul class=flashes>
@@ -31,7 +47,7 @@
 </ul>
 {% endif %}
 {% endwith %}
-
+-->
 
 <div class="container">
     <h2 class=" text-center alert alert-danger py-4">Registro de Clientes</h2>

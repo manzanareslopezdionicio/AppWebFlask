@@ -39,7 +39,7 @@ def insertar():
         cur = mysql.connection.cursor()
         cur.execute("INSERT INTO cliente(name,email,phone) VALUES(%s, %s, %s)", (name, email, phone))
         mysql.connection.commit()
-        flash('Agregado el cliente satisfactoriamente', 'success')
+        flash('Agregado satisfactoriamente', 'success')
         cur.close()
         return redirect(url_for('cliente'))
 
@@ -47,7 +47,7 @@ def insertar():
 #ELIMINAR UN REGISTRO DE LA BASE DE DATOS
 @app.route('/borrar/<int:id>', methods = ['GET'])
 def borrar(id):
-    flash('Esta seguro', 'success')
+    flash('se BORRADO Satisfactoriamente', 'success')
     cur = mysql.connection.cursor()
     cur.execute("DELETE FROM cliente WHERE id=%s", (id,))
     mysql.connection.commit()
@@ -70,7 +70,6 @@ def actualizar():
     name = request.form['name']
     email = request.form['email']
     phone = request.form['phone']
-    
     sql="UPDATE cliente SET name=%s, email=%s, phone=%s WHERE id=%s"
     datos=(name, email, phone, id)
     
@@ -78,6 +77,7 @@ def actualizar():
     cursor=conexion.cursor()
     cursor.execute(sql, datos)
     conexion.commit()
+    flash('Se actualizo Satisfactoriamente', 'success')
     return redirect(url_for('cliente'))
     
     

@@ -1,6 +1,6 @@
 {% extends 'basetarea.html' %}
 
-{% block titulo %}Agregar cliente{% endblock %}
+{% block titulo %}Editar cliente{% endblock %}
 
 {% block contenido %}
 
@@ -10,24 +10,25 @@
         <div class="card">
             <div class="card-header text-center">AGREGAR CLIENTES</div>
             <div class="card-body">
-                <form action="/guardar" method="post">
+                <form action="/edit" method="post">
+                    <input type="hidden" value="{{clientes['id']}}">
                     <div class=" form-floating mb-3">
                         <input type="text" class="form-control" name="name" id="name" aria-describedby="helpId"
-                            placeholder="Nombres" />
+                            placeholder="Nombres" value="{{clientes['name']}}" />
                         <label for="nombre" class="form-label">Nombres</label>
                     </div>
                     <div class=" form-floating mb-3">
                         <input type="text" class="form-control" name="email" id="email" aria-describedby="helpId"
-                            placeholder="Correo Electronico" />
+                            placeholder="Correo Electronico" value="{{clientes['email']}}" />
                         <label for="email" class="form-label">Correo Electronico</label>
                     </div>
                     <div class=" form-floating mb-3">
                         <input type="text" class="form-control" name="phone" id="phone" aria-describedby="helpId"
-                            placeholder="Telefono" />
+                            placeholder="Telefono" value="{{clientes['phone']}}" />
                         <label for="phone" class="form-label">Telefono</label>
                     </div>
                     <div class=" text-center">
-                        <button class="btn btn-outline-primary" type="submit">Guardar</button>
+                        <button class="btn btn-outline-primary" type="submit">Actualizar</button>
                     </div>
                 </form>
             </div>

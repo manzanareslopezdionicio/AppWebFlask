@@ -33,8 +33,8 @@
                         <td>{{d.email}}</td>
                         <td>{{d.phone}}</td>
                         <td>
-                            <a href="#" type="button" class="btn btn-success btn-sm">Editar</a>
-                            <a href="#" onclick="return confirm('Están seguros de que quieren eliminarlos')"
+                            <a href="/edit/{{d['id']}}" type="button" class="btn btn-success btn-sm">Editar</a>
+                            <a href="/borrar/{{d['id']}}" onclick="return confirm('Están seguros de que quieren eliminarlos')"
                                 class="btn btn-danger btn-sm">Eliminar</a>
                         </td>
                     </tr>

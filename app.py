@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, url_for
 from flask_mysqldb import MySQL
 
 app = Flask (__name__)
@@ -28,16 +28,48 @@ def cliente():
     conexion.commit()
     return render_template('cliente.html', clientes=clientes)
 
-@app.route('/insertar', methods=['POST'])
+#INSERTAR DATOS A LA BASE DE DATOS
+@app.route('/guardar', methods=['POST'])
 def insertar():
-    nombre=request.form['nombre']
+    if request.method == "POST":
+        name = request.form['name']
+        email = request.form['email']
+        phone = request.form['phone']
+        
+        cur = mysql.connection.cursor()
+        cur.execute("INSERT INTO cliente(name,email,phone) VALUES(%s, %s, %s)", (name, email, phone))
+        mysql.connection.commit()
+        cur.close()
+        return redirect(url_for('cliente'))
+
+
+#ELIMINAR UN REGISTRO DE LA BASE DE DATOS
+@app.route('/borrar/<int:id>', methods = ['GET'])
+def borrar(id):
+    cur = mysql.connection.cursor()
+    cur.execute("DELETE FROM cliente WHERE id=%s", (id,))
+    mysql.connection.commit()
+    return redirect(url_for('cliente'))
+
+#EDITAR DATOS DE LA BASE DEATOS
+@app.route('/edit/<int:id>') 
+def edit(id):
+    conexion=mysql.connection
+    cursor=conexion.cursor()
+    cursor.execute("SELECT * FROM cliente WHERE id=%s", (id,))
+    clientes=cursor.fetchone()
+    conexion.commit()
+    return render_template('editar.html', clientes=clientes)
+    
+    '''
+    name=request.form['name']
     email=request.form['email']
     phone=request.form['phone']
     
-    sql = "INSERT INTO cliente(name, email, phone), VALUE(%s, %s, %s)"
-    datos=(nombre, email, phone)
-    conexion=mysql.connection
-    cursor=conexion.cursor()
+    sql = "INSERT INTO cliente(name, email, phone), VALUES(%s, %s, %s)"
+    datos = (name, email, phone)
+    conexion = mysql.connection
+    cursor = conexion.cursor()
     cursor.execute(sql, datos)
     conexion.commit()
     return redirect('/cliente')
@@ -48,7 +80,7 @@ def insertar():
     #cur.close()
     return render_template('/cliente.html', cliente=data)
 
-'''
+
 #INSERTAR DATOS A LA BASE DE DATOS
 @app.route('/insert', methods=['POST'])
 def insert():

@@ -3,6 +3,26 @@
 {% block titulo %}Agregar cliente{% endblock %}
 
 {% block contenido %}
+<!--MENSAJE DE ALECTA-->
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+<ul class=flashes>
+    {% for category, message in messages %}
+    <!-- <li class="{{ category }}">{{ message }}</li> -->
+    <script type="text/javascript">
+        Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Cliente Agregado satisfactoriamente",
+            showConfirmButton: false,
+            timer: 2500
+          });
+    </script>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endwith %}
+
 
 <div class="row">
     <div class="col-4"></div>

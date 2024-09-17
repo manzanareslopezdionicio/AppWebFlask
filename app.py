@@ -1,16 +1,16 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, flash
 from flask_mysqldb import MySQL
 
 app = Flask (__name__)
 
-#app.secret_key = 'appsecretkey'
+app.secret_key = 'appsecretkey'
 
 mysql=MySQL()
 
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_PORT'] = 3306
-app.config['MYSQL_USER'] = 'dmanzanares'
-app.config['MYSQL_PASSWORD'] = 'password123'
+app.config['MYSQL_USER'] = 'root'
+app.config['MYSQL_PASSWORD'] = ''
 app.config['MYSQL_DB'] = 'crud'
 app.config['MYSQL_CURSORCLASS']='DictCursor' #Diccionario de la database
 mysql.init_app(app)
@@ -21,7 +21,7 @@ def cliente():
     
     sql = "SELECT * FROM cliente"
     
-    conexion = mysql.connection #
+    conexion = mysql.connection 
     cursor = conexion.cursor()
     cursor.execute(sql) #EJE
     clientes = cursor.fetchall() #RECUPERAR LA VARIABLE
@@ -39,6 +39,7 @@ def insertar():
         cur = mysql.connection.cursor()
         cur.execute("INSERT INTO cliente(name,email,phone) VALUES(%s, %s, %s)", (name, email, phone))
         mysql.connection.commit()
+        flash('Agregado el cliente satisfactoriamente', 'success')
         cur.close()
         return redirect(url_for('cliente'))
 
@@ -46,6 +47,7 @@ def insertar():
 #ELIMINAR UN REGISTRO DE LA BASE DE DATOS
 @app.route('/borrar/<int:id>', methods = ['GET'])
 def borrar(id):
+    flash('Esta seguro', 'success')
     cur = mysql.connection.cursor()
     cur.execute("DELETE FROM cliente WHERE id=%s", (id,))
     mysql.connection.commit()

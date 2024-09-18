@@ -47,7 +47,7 @@ def insertar():
 #ELIMINAR UN REGISTRO DE LA BASE DE DATOS
 @app.route('/borrar/<int:id>', methods = ['GET'])
 def borrar(id):
-    flash('se BORRADO Satisfactoriamente', 'success')
+    #flash('Sera borrado permanentemente', 'question')
     cur = mysql.connection.cursor()
     cur.execute("DELETE FROM cliente WHERE id=%s", (id,))
     mysql.connection.commit()

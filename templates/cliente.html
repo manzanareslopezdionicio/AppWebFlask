@@ -4,14 +4,27 @@
 
 {% block contenido %}
 <!--MENSAJE DE ALECTA-->
+
+
 {% with messages = get_flashed_messages(with_categories=true) %}
 {% if messages %}
 <ul class=flashes>
     {% for category, message in messages %}
     <script type="text/javascript">
-        Swal.fire({
-            title: "El cliente",
-            text: "{{message}}"
+        const Toast = Swal.mixin({
+            toast: true,
+            position: "top-end",
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.onmouseenter = Swal.stopTimer;
+                toast.onmouseleave = Swal.resumeTimer;
+            }
+        });
+        Toast.fire({
+            icon: "success",
+            title: "{{message}}"
         });
     </script>
     {% endfor %}
@@ -78,7 +91,9 @@
                         <td>{{d.phone}}</td>
                         <td>
                             <a href="/edit/{{d['id']}}" type="button" class="btn btn-success btn-sm">Editar</a>
-                            <a href="/borrar/{{d['id']}}" onclick="return confirm('Esta seguro de que quieren eliminarlos')" class="btn btn-danger btn-sm">Eliminar</a>
+                            <a href="/borrar/{{d['id']}}"
+                                onclick="return confirm('Esta seguro de que quieren eliminarlos')"
+                                class="btn btn-danger btn-sm">Eliminar</a>
                         </td>
                     </tr>
                     {%endfor%}

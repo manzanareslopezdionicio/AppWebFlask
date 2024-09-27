@@ -43,7 +43,6 @@ def insertar():
         cur.close()
         return redirect(url_for('cliente'))
 
-
 #ELIMINAR UN REGISTRO DE LA BASE DE DATOS
 @app.route('/borrar/<int:id>', methods = ['GET'])
 def borrar(id):

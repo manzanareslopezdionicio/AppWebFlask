@@ -1,4 +1,5 @@
 # Ignora los archivos relacionados a API keys
+<<<<<<< HEAD
 # Environments
 .env
 .venv
@@ -7,3 +8,7 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+=======
+/env
+.env
+>>>>>>> 4ebae8e32c8ea5f5f70ff149cb9be79c97394d3a

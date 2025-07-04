@@ -39,10 +39,9 @@ def insertar():
         cur = mysql.connection.cursor()
         cur.execute("INSERT INTO cliente(name,email,phone) VALUES(%s, %s, %s)", (name, email, phone))
         mysql.connection.commit()
-        flash('Agregado satisfactoriamente', 'success')
+        flash('Agregado satisfactoriamente', 'success') # MENSAJE DE ALERTA
         cur.close()
         return redirect(url_for('cliente'))
-
 
 #ELIMINAR UN REGISTRO DE LA BASE DE DATOS
 @app.route('/borrar/<int:id>', methods = ['GET'])

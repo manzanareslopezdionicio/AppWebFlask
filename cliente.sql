@@ -38,7 +38,7 @@ CREATE TABLE `cliente` (
 -- Volcado de datos para la tabla `cliente`
 --
 
-INSERT INTO `cliente` (`id`, `name`, `email`, `phone`) VALUES
+INSERT INTO 'cliente' (`id`, `name`, `email`, `phone`) VALUES
 (25, 'Roberto Matamoros', 'roberto@noel.com', '0712541669'),
 (32, 'Dionicio Manzanares', 'manzanaresdionicio@gmail.com', '82189049'),
 (33, 'Dionicio Manzanares López', 'manzanaresdionicio@gmail.com', '82189049');

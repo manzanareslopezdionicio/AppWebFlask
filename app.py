@@ -10,7 +10,7 @@ mysql=MySQL()
 app.config['MYSQL_HOST'] = 'bidjik4bafqquqilc7af-mysql.services.clever-cloud.com' #HOST DE LA BASE DE DATOS
 app.config['MYSQL_PORT'] = 3306
 app.config['MYSQL_USER'] = 'ui6frgmnqkh59ehy'
-app.config['MYSQL_PASSWORD'] = ''
+app.config['MYSQL_PASSWORD'] = 'HCZ3sVfCQHoEL2wTrLzv'
 app.config['MYSQL_DB'] = 'bidjik4bafqquqilc7af'
 app.config['MYSQL_CURSORCLASS']='DictCursor' #Diccionario de la database
 mysql.init_app(app)

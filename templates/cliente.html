@@ -4,7 +4,7 @@
 
 {% block contenido %}
 
-<!--MENSAJE DE ALECTA-->
+<!--MENSAJE DE ALERTA SweetAlert2-->
 {% with messages = get_flashed_messages(with_categories=true) %}
 {% if messages %}
 <ul class=flashes>
@@ -31,6 +31,24 @@
 {% endif %}
 {% endwith %}
 
+<script>
+    function confirmarEliminacion(url) {
+        Swal.fire({
+            title: '¿Estás seguro?',
+            text: "¡No podrás revertir esto!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Sí, eliminar',
+            cancelButtonText: 'Cancelar'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = url;
+            }
+        });
+    }
+</script>
 
 <div class="container">
     <h2 class=" text-center alert alert-danger py-4">Registro de Clientes</h2>
@@ -120,8 +138,7 @@
                         <td>{{d.phone}}</td>
                         <td>
                             <a href="/edit/{{d['id']}}" type="button" class="btn btn-success btn-sm">Editar</a>
-                            <a href="/borrar/{{d['id']}}"
-                                onclick="return confirm('Esta seguro de que quieren eliminarlos')"
+                            <a href="javascript:void(0);" onclick="confirmarEliminacion('/borrar/{{d['id']}}')"
                                 class="btn btn-danger btn-sm">Eliminar</a>
                         </td>
                     </tr>

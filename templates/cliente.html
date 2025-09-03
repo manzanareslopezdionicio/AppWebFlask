@@ -31,6 +31,7 @@
 {% endif %}
 {% endwith %}
 
+<!--MENSAJE DE ALERTA PARA ELIMINACION SweetAlert2-->
 <script>
     function confirmarEliminacion(url) {
         Swal.fire({
@@ -50,36 +51,36 @@
     }
 </script>
 
-<div class="container">
-    <h2 class=" text-center alert alert-danger py-4">Registro de Clientes</h2>
+<div class="container p-5 mt-3">
+    <h2 class=" text-center alert alert-danger py-5">Registro de Clientes</h2>
     <div class="row">
-        <div class="row">
+        <div class="row text-center">
             <div class="col-sm-6 mb-3 mb-sm-0">
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Usuarios Registrados</h5>
                         <p class="card-text">Total: {{ usuarios|length }}</p>
-                        <!-- <a href="#" class="btn btn-primary">Ver Detalles</a> -->
+                        <a href="#" class="btn btn-primary">Ver Detalles</a>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-6">
+            <div class="col-sm-6 mb-3 mb-sm-0">
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Clientes Registrados</h5>
                         <p class="card-text">Total: {{ clientes|length }}</p>
-                        <!-- <a href="#" class="btn btn-primary">Ver Detalles</a> -->
+                        <a href="#" class="btn btn-primary">Ver Detalles</a>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="">
-            <h2>Listado de CLIENTES</h2>
+        <div class="p-3">
+            <h2 class="text-center">Listado de CLIENTES</h2>
             <!-- Button trigger modal -->
             <button type="button" class="btn btn-primary float-end" data-bs-toggle="modal"
                 data-bs-target="#exampleModal">
-                Nuevo
+                Agregar Cliente
             </button>
             <br>
             <!-- Modal -->
@@ -95,17 +96,17 @@
                             <form action="/guardar" method="post">
                                 <div class=" form-floating mb-2">
                                     <input type="text" class="form-control" name="name" id="name"
-                                        aria-describedby="helpId" placeholder="Nombres" />
+                                        aria-describedby="helpId" placeholder="Nombres"  required />
                                     <label for="nombre" class="form-label">Nombres</label>
                                 </div>
                                 <div class=" form-floating mb-2">
                                     <input type="text" class="form-control" name="email" id="email"
-                                        aria-describedby="helpId" placeholder="Correo Electronico" />
+                                        aria-describedby="helpId" placeholder="Correo Electronico" required />
                                     <label for="email" class="form-label">Correo Electronico</label>
                                 </div>
                                 <div class=" form-floating mb-2">
                                     <input type="text" class="form-control" name="phone" id="phone"
-                                        aria-describedby="helpId" placeholder="Telefono" />
+                                        aria-describedby="helpId" placeholder="Telefono" required />
                                     <label for="phone" class="form-label">Telefono</label>
                                 </div>
                         </div>

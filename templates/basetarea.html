@@ -14,12 +14,11 @@
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script type="" src="{{ url_for('.static', filename = 'js/eliminar.js') }}"></script>
 
-
 </head>
 
 <body>
   <header>
-    <nav class="navbar navbar-expand-lg bg-body-secondary" data-bs-theme="dark">
+    <nav class="navbar navbar-expand-lg bg-body-secondary fixed-top" data-bs-theme="dark">
       <div class="container">
         <a class="navbar-brand" href="/">LOGO</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -27,7 +26,7 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav justify-content-center flex-grow-1 pe-3">
+          <ul class="navbar-nav justify-content-center flex-grow-1 pe-5">
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="/">Home</a>
             </li>
@@ -35,11 +34,14 @@
               <a class="nav-link mx-lg-2" href="{{url_for('cliente')}}">Cliente</a>
             </li>
           </ul>
+          <div class="d-flex">
+            <a class="btn btn-primary" href="#" role="button">Salir</a>
+          </div>
         </div>
       </div>
     </nav>
   </header>
-  <main></main>
+
   {% block contenido %}
 
   {% endblock %}

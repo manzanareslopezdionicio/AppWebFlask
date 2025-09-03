@@ -31,35 +31,6 @@
 {% endif %}
 {% endwith %}
 
-<!--MENSAJE DE ALECTA
-{% with messages = get_flashed_messages(with_categories=true) %}
-{% if messages %}
-<ul class=flashes>
-    {% for category, message in messages %}
-    <script type="text/javascript">
-        Swal.fire({
-            title: "Estas seguro?",
-            text: "No podrás revertir!",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#3085d6",
-            cancelButtonColor: "#d33",
-            confirmButtonText: "Eliminar"
-          }).then((result) => {
-            if (result.isConfirmed) {
-              Swal.fire({
-                title: "Eliminado!",
-                text: "Tu registro ha sido eliminado.",
-                icon: "success"
-              });
-            }
-          });
-    </script>
-    {% endfor %}
-</ul>
-{% endif %}
-{% endwith %}
--->
 
 <div class="container">
     <h2 class=" text-center alert alert-danger py-4">Registro de Clientes</h2>
